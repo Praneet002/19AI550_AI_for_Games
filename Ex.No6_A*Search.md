@@ -150,8 +150,7 @@ while True:
     print()
 ```
 ### Output:
-
-
+![image](https://github.com/user-attachments/assets/dcc4679b-a096-4b67-a4ca-6664973dba99)
 
 ### Result:
 Thus the simple Zombie survival game was implemented using python.
