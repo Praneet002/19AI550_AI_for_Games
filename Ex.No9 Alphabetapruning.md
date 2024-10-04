@@ -15,18 +15,51 @@ Write a Alpha beta pruning algorithm to find the optimal value of MAX Player fro
 9.  Stop the program. 
 
 ### Program:
+```
+# Define the game tree
+game_tree = {
+    'A': {'B': 3, 'C': 5},
+    'B': {'D': 2, 'E': 4},
+    'C': {'F': 6, 'G': 1},
+    'D': 2,
+    'E': 4,
+    'F': 6,
+    'G': 1
+}
 
+# Define the alpha-beta pruning algorithm
+def alpha_beta(node, depth, alpha, beta, is_maximizing_player):
+    if depth == 0 or node not in game_tree or isinstance(game_tree[node], int):
+        return game_tree[node]
 
+    if is_maximizing_player:
+        value = float('-inf')
+        for child in game_tree[node]:
+            value = max(value, alpha_beta(child, depth - 1, alpha, beta, False))
+            alpha = max(alpha, value)
+            if alpha >= beta:
+                break
+        return value
+    else:
+        value = float('inf')
+        for child in game_tree[node]:
+            value = min(value, alpha_beta(child, depth - 1, alpha, beta, True))
+            beta = min(beta, value)
+            if alpha >= beta:
+                break
+        return value
 
-
-
-
-
-
-
-
+# Test the alpha-beta pruning algorithm
+alpha = float('-inf')
+beta = float('inf')
+depth = 2
+root_node = 'A'
+optimal_value = alpha_beta(root_node, depth, alpha, beta, True)
+print("Optimal value for root node:", optimal_value)
+```
 
 ### Output:
+![Screenshot 2024-10-04 141221](https://github.com/user-attachments/assets/92e6b322-18c2-4b17-97b6-1ec2c6d30385)
 
 
 
